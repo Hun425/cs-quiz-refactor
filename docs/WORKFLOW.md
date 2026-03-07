@@ -18,3 +18,8 @@
 ## PR Cadence
 - Small PRs daily or every two days.
 - Early draft PR is encouraged for review feedback.
+
+## Roadmap Alignment
+- Follow docs/ROADMAP.md backlog order by default.
+- If order changes, document reason in PR 'Design Notes'.
+
