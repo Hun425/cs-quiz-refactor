@@ -1,0 +1,43 @@
+﻿syntax = "proto3";
+
+package csquiz.identity.v1;
+
+option java_multiple_files = true;
+option java_package = "com.csquiz.proto.identity.v1";
+
+service IdentityService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc ChangeNickname(ChangeNicknameRequest) returns (ChangeNicknameResponse);
+  rpc GetMember(GetMemberRequest) returns (GetMemberResponse);
+}
+
+message RegisterRequest {
+  string provider = 1;          // GOOGLE
+  string provider_user_id = 2;
+  string email = 3;
+  string nickname = 4;
+}
+
+message RegisterResponse {
+  string member_id = 1;
+}
+
+message ChangeNicknameRequest {
+  string member_id = 1;
+  string new_nickname = 2;
+}
+
+message ChangeNicknameResponse {}
+
+message GetMemberRequest {
+  string member_id = 1;
+}
+
+message GetMemberResponse {
+  string member_id = 1;
+  string provider = 2;
+  string email = 3;
+  string nickname = 4;
+  string role = 5;
+  int64 created_at = 6;
+}

@@ -1,0 +1,88 @@
+﻿syntax = "proto3";
+
+package csquiz.quiz.v1;
+
+option java_multiple_files = true;
+option java_package = "com.csquiz.proto.quiz.v1";
+
+service QuizService {
+  rpc CreateQuiz(CreateQuizRequest) returns (CreateQuizResponse);
+  rpc GetQuiz(GetQuizRequest) returns (GetQuizResponse);
+  rpc ListQuizzesByCategory(ListQuizzesByCategoryRequest) returns (ListQuizzesByCategoryResponse);
+  rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse);
+  rpc ListCategories(ListCategoriesRequest) returns (ListCategoriesResponse);
+}
+
+message CreateQuizRequest {
+  string category_id = 1;
+  string type = 2;
+  string content = 3;
+  string answer = 4;
+  repeated ChoiceData choices = 5;
+  string difficulty = 6;
+  string created_by = 7;
+}
+
+message ChoiceData {
+  int32 number = 1;
+  string content = 2;
+  bool is_correct = 3;
+}
+
+message CreateQuizResponse {
+  string quiz_id = 1;
+}
+
+message GetQuizRequest {
+  string quiz_id = 1;
+}
+
+message GetQuizResponse {
+  string quiz_id = 1;
+  string category_id = 2;
+  string type = 3;
+  string content = 4;
+  string answer = 5;
+  repeated ChoiceData choices = 6;
+  string difficulty = 7;
+  int64 created_at = 8;
+}
+
+message ListQuizzesByCategoryRequest {
+  string category_id = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+}
+
+message ListQuizzesByCategoryResponse {
+  repeated QuizSummary quizzes = 1;
+  int64 total_count = 2;
+}
+
+message QuizSummary {
+  string quiz_id = 1;
+  string type = 2;
+  string content = 3;
+  string difficulty = 4;
+}
+
+message CreateCategoryRequest {
+  string name = 1;
+  string description = 2;
+}
+
+message CreateCategoryResponse {
+  string category_id = 1;
+}
+
+message ListCategoriesRequest {}
+
+message ListCategoriesResponse {
+  repeated CategoryItem categories = 1;
+}
+
+message CategoryItem {
+  string category_id = 1;
+  string name = 2;
+  string description = 3;
+}
