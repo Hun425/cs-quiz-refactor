@@ -5,6 +5,14 @@ package csquiz.session.v1;
 option java_multiple_files = true;
 option java_package = "com.csquiz.proto.session.v1";
 
+enum SessionStatus {
+  SESSION_STATUS_UNSPECIFIED = 0;
+  SESSION_STATUS_STARTED = 1;
+  SESSION_STATUS_IN_PROGRESS = 2;
+  SESSION_STATUS_COMPLETED = 3;
+  SESSION_STATUS_ABANDONED = 4;
+}
+
 service SessionService {
   rpc StartSession(StartSessionRequest) returns (StartSessionResponse);
   rpc SubmitAnswer(SubmitAnswerRequest) returns (SubmitAnswerResponse);
@@ -51,7 +59,7 @@ message GetSessionResponse {
   string session_id = 1;
   string member_id = 2;
   string category_id = 3;
-  string status = 4;
+  SessionStatus status = 4;
   int32 total_score = 5;
   int32 attempt_count = 6;
   int32 correct_count = 7;
@@ -82,7 +90,7 @@ message ListSessionsByMemberResponse {
 message SessionSummary {
   string session_id = 1;
   string category_id = 2;
-  string status = 3;
+  SessionStatus status = 3;
   int32 total_score = 4;
   int32 attempt_count = 5;
   int32 correct_count = 6;

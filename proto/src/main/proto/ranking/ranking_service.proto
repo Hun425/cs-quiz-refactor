@@ -5,21 +5,34 @@ package csquiz.ranking.v1;
 option java_multiple_files = true;
 option java_package = "com.csquiz.proto.ranking.v1";
 
+enum RankingScope {
+  RANKING_SCOPE_UNSPECIFIED = 0;
+  RANKING_SCOPE_GLOBAL = 1;
+  RANKING_SCOPE_CATEGORY = 2;
+}
+
+enum RankingPeriod {
+  RANKING_PERIOD_UNSPECIFIED = 0;
+  RANKING_PERIOD_WEEKLY = 1;
+  RANKING_PERIOD_MONTHLY = 2;
+  RANKING_PERIOD_ALL_TIME = 3;
+}
+
 service RankingService {
   rpc GetRanking(GetRankingRequest) returns (GetRankingResponse);
   rpc GetMemberRank(GetMemberRankRequest) returns (GetMemberRankResponse);
 }
 
 message GetRankingRequest {
-  string scope = 1;
-  string period = 2;
+  RankingScope scope = 1;
+  RankingPeriod period = 2;
   string category_id = 3;
   int32 limit = 4;
 }
 
 message GetRankingResponse {
-  string scope = 1;
-  string period = 2;
+  RankingScope scope = 1;
+  RankingPeriod period = 2;
   string category_id = 3;
   repeated RankEntryItem entries = 4;
 }
@@ -32,8 +45,8 @@ message RankEntryItem {
 
 message GetMemberRankRequest {
   string member_id = 1;
-  string scope = 2;
-  string period = 3;
+  RankingScope scope = 2;
+  RankingPeriod period = 3;
   string category_id = 4;
 }
 
