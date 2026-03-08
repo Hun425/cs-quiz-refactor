@@ -1,0 +1,91 @@
+﻿syntax = "proto3";
+
+package csquiz.session.v1;
+
+option java_multiple_files = true;
+option java_package = "com.csquiz.proto.session.v1";
+
+service SessionService {
+  rpc StartSession(StartSessionRequest) returns (StartSessionResponse);
+  rpc SubmitAnswer(SubmitAnswerRequest) returns (SubmitAnswerResponse);
+  rpc CompleteSession(CompleteSessionRequest) returns (CompleteSessionResponse);
+  rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
+  rpc ListSessionsByMember(ListSessionsByMemberRequest) returns (ListSessionsByMemberResponse);
+}
+
+message StartSessionRequest {
+  string member_id = 1;
+  optional string category_id = 2;  // null이면 혼합 출제
+}
+
+message StartSessionResponse {
+  string session_id = 1;
+}
+
+message SubmitAnswerRequest {
+  string session_id = 1;
+  string quiz_id = 2;
+  string answer = 3;
+}
+
+message SubmitAnswerResponse {
+  bool is_correct = 1;
+  int32 earned_score = 2;
+}
+
+message CompleteSessionRequest {
+  string session_id = 1;
+}
+
+message CompleteSessionResponse {
+  int32 total_score = 1;
+  int32 attempt_count = 2;
+  int32 correct_count = 3;
+}
+
+message GetSessionRequest {
+  string session_id = 1;
+}
+
+message GetSessionResponse {
+  string session_id = 1;
+  string member_id = 2;
+  string category_id = 3;
+  string status = 4;
+  int32 total_score = 5;
+  int32 attempt_count = 6;
+  int32 correct_count = 7;
+  repeated AttemptItem attempts = 8;
+  int64 started_at = 9;
+  int64 completed_at = 10;
+}
+
+message AttemptItem {
+  string attempt_id = 1;
+  string quiz_id = 2;
+  string submitted_answer = 3;
+  bool is_correct = 4;
+  int32 earned_score = 5;
+  int64 attempted_at = 6;
+}
+
+message ListSessionsByMemberRequest {
+  string member_id = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+}
+
+message ListSessionsByMemberResponse {
+  repeated SessionSummary sessions = 1;
+}
+
+message SessionSummary {
+  string session_id = 1;
+  string category_id = 2;
+  string status = 3;
+  int32 total_score = 4;
+  int32 attempt_count = 5;
+  int32 correct_count = 6;
+  int64 started_at = 7;
+  int64 completed_at = 8;
+}

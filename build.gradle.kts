@@ -1,5 +1,9 @@
-﻿plugins {
+﻿import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
     kotlin("jvm") version "1.9.25" apply false
+    id("com.google.protobuf") version "0.9.5" apply false
 }
 
 allprojects {
@@ -8,6 +12,7 @@ allprojects {
 
     repositories {
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
@@ -23,7 +28,9 @@ subprojects {
         useJUnitPlatform()
     }
 
-    kotlin {
-        jvmToolchain(21)
+    tasks.withType<KotlinCompile>().configureEach {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
 }
