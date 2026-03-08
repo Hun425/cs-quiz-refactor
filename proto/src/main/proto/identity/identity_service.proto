@@ -5,6 +5,17 @@ package csquiz.identity.v1;
 option java_multiple_files = true;
 option java_package = "com.csquiz.proto.identity.v1";
 
+enum OAuthProvider {
+  OAUTH_PROVIDER_UNSPECIFIED = 0;
+  OAUTH_PROVIDER_GOOGLE = 1;
+}
+
+enum MemberRole {
+  MEMBER_ROLE_UNSPECIFIED = 0;
+  MEMBER_ROLE_USER = 1;
+  MEMBER_ROLE_ADMIN = 2;
+}
+
 service IdentityService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc ChangeNickname(ChangeNicknameRequest) returns (ChangeNicknameResponse);
@@ -12,7 +23,7 @@ service IdentityService {
 }
 
 message RegisterRequest {
-  string provider = 1;          // GOOGLE
+  OAuthProvider provider = 1;
   string provider_user_id = 2;
   string email = 3;
   string nickname = 4;
@@ -35,9 +46,9 @@ message GetMemberRequest {
 
 message GetMemberResponse {
   string member_id = 1;
-  string provider = 2;
+  OAuthProvider provider = 2;
   string email = 3;
   string nickname = 4;
-  string role = 5;
+  MemberRole role = 5;
   int64 created_at = 6;
 }
