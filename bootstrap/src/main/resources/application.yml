@@ -1,0 +1,8 @@
+﻿spring:
+  application:
+    name: cs-quiz-bootstrap
+
+armeria:
+  ports:
+    - port: 8080
+      protocol: HTTP
