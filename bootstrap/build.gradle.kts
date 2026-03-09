@@ -13,7 +13,8 @@ dependencies {
     implementation(project(":proto"))
 
     implementation("org.springframework.boot:spring-boot-starter")
-    implementation("com.linecorp.armeria:armeria-spring-boot3-starter:${property("armeriaVersion")}")
+    implementation("com.linecorp.armeria:armeria-spring-boot4-starter:${property("armeriaVersion")}")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
+
