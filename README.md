@@ -9,6 +9,7 @@
 ## Docs
 - Roadmap: `docs/ROADMAP.md`
 - Workflow: `docs/WORKFLOW.md`
+- Stack baseline: `docs/STACK_BASELINE.md`
 - Contribution rules: `CONTRIBUTING.md`
 - PR template: `.github/PULL_REQUEST_TEMPLATE.md`
 
@@ -17,4 +18,3 @@
 - Armeria, gRPC, Protocol Buffers
 - jOOQ, R2DBC, PostgreSQL
 - Gradle Kotlin DSL
-

@@ -20,6 +20,9 @@
   2. Which alternatives were considered.
   3. How this maps to production concerns (consistency, failure, operations).
 
+## Version Baseline
+- Keep `docs/STACK_BASELINE.md` updated when changing framework/runtime versions.
+
 ## Current Tech Stack
 - Kotlin
 - Spring Boot

@@ -19,7 +19,10 @@
 - Small PRs daily or every two days.
 - Early draft PR is encouraged for review feedback.
 
+## Version Memory Rule
+- Version decisions must be recorded in `docs/STACK_BASELINE.md`.
+- If a PR changes versions, update `docs/STACK_BASELINE.md` in the same PR.
+
 ## Roadmap Alignment
 - Follow docs/ROADMAP.md backlog order by default.
 - If order changes, document reason in PR 'Design Notes'.
-
