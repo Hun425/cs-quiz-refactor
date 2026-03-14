@@ -9,7 +9,9 @@
 ## Docs
 - Roadmap: `docs/ROADMAP.md`
 - Workflow: `docs/WORKFLOW.md`
+- Stack baseline: `docs/STACK_BASELINE.md`
 - Contribution rules: `CONTRIBUTING.md`
+- Local DB: `docs/LOCAL_DB.md`
 - PR template: `.github/PULL_REQUEST_TEMPLATE.md`
 
 ## Tech Stack
@@ -17,4 +19,3 @@
 - Armeria, gRPC, Protocol Buffers
 - jOOQ, R2DBC, PostgreSQL
 - Gradle Kotlin DSL
-
