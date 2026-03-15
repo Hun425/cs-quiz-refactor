@@ -19,4 +19,6 @@ dependencies {
     implementation("org.postgresql:r2dbc-postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.assertj:assertj-core:3.27.3")
+    testImplementation("com.h2database:h2")
 }
